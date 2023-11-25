@@ -67,31 +67,5 @@ func create_csv(l [][]string) {
 		fmt.Println("Error opening file:", err)
 		return
 	}
-	defer file.Close()
-	writer := csv.NewWriter(file)
-
-	defer writer.Flush()
-
-	reader := csv.NewReader(file)
-
-	writer.Write([]string{"Name", "Age"})
-
-	reader.FieldsPerRecord = -1
-	records := l
-	// records, err := reader.ReadAll()
-	// if err != nil {
-	// 	fmt.Println("Error reading CSV data:", err)
-	// 	return
-	// }
-	//
-	// for _, record := range records {
-	// 	fmt.Println(record)
-	// }
-	for _, record := range records {
-		err := writer.Write(record)
-		if err != nil {
-			fmt.Println("Error:", err)
-			return
-		}
-	}
+	
 }
